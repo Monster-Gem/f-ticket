@@ -13,7 +13,7 @@ app.config['MONGODB_SETTINGS'] = {
     'port':DATABASE_PORT
 }
 
-database.init_app()
+database.init_app(app)
 
 if __name__ == '__main__':
     app.run(debug=True)
