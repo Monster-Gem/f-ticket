@@ -1,4 +1,5 @@
-Flask==2.0.1
-mongoengine==0.23.1
+flask
 python-dotenv
 flask_mongoengine
+Flask-RESTful==0.3.8
+PyJWT==1.7.1

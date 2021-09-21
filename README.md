@@ -12,9 +12,10 @@ Create a `.env` file on the root directory for this project, containing:
 DATABASE_NAME={database_name}
 DATABASE_HOST={database_host}
 DATABASE_PORT={database_port}
+SECRET_KEY={secret_key}
 ```
 
-Run the project with: 
+Run the project with:
 
 ```shell
 cd src
