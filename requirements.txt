@@ -1,3 +1,5 @@
 flask
 python-dotenv
 flask_mongoengine
+Flask-RESTful==0.3.8
+PyJWT==1.7.1
