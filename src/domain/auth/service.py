@@ -15,11 +15,10 @@ def sign_up(client):
 
 def sign_in(client):
     user = service.get_user(client.email)
-    if user:
-        if check_password_hash(user.password, client.password):
-            return user, get_token(user).decode('UTF-8')
-        else:
-            raise NotFound('Could not verify.')
+    if user and check_password_hash(user.password, client.password):
+        token = get_token(user).decode('UTF-8')
+        service.set_user_token(user, token)
+        return user, token
     else:
         raise NotFound('Could not verify.')
 
@@ -28,3 +27,7 @@ def get_token(user):
         'public_id': user.public_id,
         'exp' : datetime.utcnow() + timedelta(minutes = 30)
     }, SECRET_KEY)
+
+def log_out(user):
+    service.reset_user_token(user)
+    return

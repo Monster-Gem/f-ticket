@@ -26,3 +26,9 @@ def update_user(email, update_user):
         raise NotFound('User does not exists.')
     else:
         return repository.update_user(user, update_user)
+
+def set_user_token(user, token):
+    return repository.set_user_token(user, token)
+
+def reset_user_token(user):
+    return repository.set_user_token(user, None)
