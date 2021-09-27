@@ -7,3 +7,4 @@ class User(database.Document):
     email = database.StringField(required=True, max_length=320, unique=True)
     password = database.StringField(required=True, max_length=128)
     role = database.StringField(choices=UserRoles.list(), default=UserRoles.USER.value)
+    last_valid_token = database.StringField()
