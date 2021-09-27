@@ -3,6 +3,7 @@ from flask import Flask
 from domain.maintenance.controller import maintenance
 from domain.maintenance.repository import database
 from domain.auth.controller import auth
+from domain.city.controller import city
 from domain.user.controller import user
 
 app = Flask(__name__)
@@ -10,6 +11,7 @@ app = Flask(__name__)
 app.register_blueprint(maintenance)
 app.register_blueprint(user)
 app.register_blueprint(auth)
+app.register_blueprint(city)
 
 app.config['MONGODB_SETTINGS'] = {
     'db':DATABASE_NAME,
