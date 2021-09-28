@@ -27,8 +27,8 @@ def admin_required(function):
     def verify_admin(authenticated_user, *args, **kwargs):
         if not authenticated_user:
             raise Unauthorized('User is missing')
-        if authenticated_user.role != UserRoles.ADMIN.value:
-            print(authenticated_user.role, UserRoles.ADMIN.value)
+        if authenticated_user.role != UserRoles.ADMIN:
+            print(authenticated_user.role, UserRoles.ADMIN)
             raise Unauthorized('User is not an Admin')
         return function(authenticated_user, *args, **kwargs)
     return verify_admin
