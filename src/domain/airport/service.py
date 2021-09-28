@@ -4,9 +4,6 @@ from werkzeug.exceptions import Conflict, NotFound
 def get_airports(name=None):
     return get_airport(name) if name is not None else repository.get_all_airports()
 
-def get_airport_by_public_id(public_id):
-    return repository.get_airport_by_public_id(public_id)
-
 def get_airport(name):
     airport = repository.get_airport(name)
     if not airport:

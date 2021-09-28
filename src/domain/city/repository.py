@@ -6,9 +6,6 @@ def get_all_cities():
 def get_city(name):
     return entity.City.objects(name=name).first()
 
-def get_city_by_public_id(public_id):
-    return entity.City.objects(public_id=public_id).get_or_404()
-
 def add_city(city):
     city.save()
     return city

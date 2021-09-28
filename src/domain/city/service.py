@@ -4,9 +4,6 @@ from werkzeug.exceptions import Conflict, NotFound
 def get_cities(name=None):
     return get_city(name) if name is not None else repository.get_all_cities()
 
-def get_city_by_public_id(public_id):
-    return repository.get_city_by_public_id(public_id)
-
 def get_city(name):
     city = repository.get_city(name)
     if not city:

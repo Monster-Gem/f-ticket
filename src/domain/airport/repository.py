@@ -6,9 +6,6 @@ def get_all_airports():
 def get_airport(name):
     return entity.Airport.objects(name=name).first()
 
-def get_airport_by_public_id(public_id):
-    return entity.Airport.objects(public_id=public_id).get_or_404()
-
 def add_airport(airport):
     airport.save()
     return airport
