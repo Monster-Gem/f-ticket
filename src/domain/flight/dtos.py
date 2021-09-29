@@ -1,6 +1,6 @@
 from domain.flight import entity
 from flask_mongoengine import BaseQuerySet
-from domain.route.service import get_route
+from domain.route.service import get_routes
 from domain.route.dtos import json_from_route
 from domain.airport.service import get_airport
 from decimal import Decimal
@@ -12,9 +12,11 @@ def args_to_max_capacity(args):
     return args.get('max_capacity', None)
 
 def args_to_route(args):
-    route_origin_name = args.get("route", {"origin": None}).get('origin')
-    route_destination_name = args.get("route", {"destination": None}).get('destination')
-    return None if route_origin_name or route_destination_name is None else get_route(route_origin_name, route_destination_name)
+    origin_name = args.get("origin", None)
+    destination_name = args.get("destination", None)
+    origin = get_airport(origin_name) if origin_name else None
+    destination = get_airport(destination_name) if destination_name else None
+    return get_routes(origin, destination) if origin or destination else None
 
 def args_to_departure_time(args):
     return args.get('departure_time', None)
@@ -41,3 +43,14 @@ def flight_from_json(flight_json):
             get_airport(route_json.get('origin', {"name": None}).get('name')),
             get_airport(route_json.get('destination', {"name": None}).get('name'))),
         departure_time=flight_json.get('departure_time'))
+
+def json_to_update_flight(flight_json):
+    route = flight_json.get('route', {'origin': {'name': None}, 'destination': {'name': None}})
+    origin_name = route.get('origin').get('name')
+    destination_name = route.get('destination').get('name')
+    return {
+        'price': flight_json.get('price', None),
+        'max_capacity': flight_json.get('max_capacity', None),
+        'departure_time': flight_json.get('departure_time', None),
+        'route': get_route(origin_name, destination_name) if origin_name and destination_name else None,
+    }

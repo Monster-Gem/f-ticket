@@ -27,3 +27,12 @@ def delete_flight(authenticated_user):
         dtos.args_to_route(request.args), 
         dtos.args_to_departure_time(request.args))
     return {}
+    
+@flight.route('', methods = ['PATCH'])
+@admin_required
+def update_flight(authenticated_user):
+    return dtos.json_from_flights(
+        service.update_flight(
+            dtos.args_to_route(request.args), 
+            dtos.args_to_departure_time(request.args),
+            dtos.json_to_update_flight(json.loads(request.get_data().decode()))))
