@@ -1,6 +1,9 @@
 from . import repository
 from werkzeug.exceptions import Conflict, NotFound
 
+def get_flights(route=None, departure_time=None):
+    return get_flight(route, departure_time) if route is not None and departure_time is not None else repository.get_all_flights()
+
 def get_flight(route, departure_time):
     flight = repository.get_flight(route, departure_time)
     if not flight:

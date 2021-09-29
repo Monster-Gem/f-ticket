@@ -17,8 +17,6 @@ def add_flight(authenticated_user):
 def get_flights(authenticated_user):
     return dtos.json_from_flights(
         service.get_flights(
-            dtos.args_to_price(request.args), 
-            dtos.args_to_max_capacity(request.args), 
             dtos.args_to_route(request.args), 
             dtos.args_to_departure_time(request.args)))
 

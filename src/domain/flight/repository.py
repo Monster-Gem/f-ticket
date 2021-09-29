@@ -5,7 +5,7 @@ def get_all_flights():
     return entity.Flight.objects()
 
 def get_flight(route, departure_time):
-    return entity.Flight.objects(Q(route__origin=route.origin) & Q(route__destination=route.destination) & Q(departure_time=departure_time)).first()
+    return entity.Flight.objects(Q(route=route) & Q(departure_time=departure_time)).first()
 
 def add_flight(flight):
     flight.save()
