@@ -1,4 +1,5 @@
 from . import repository
+from domain.route.repository import get_route_with_origin
 from werkzeug.exceptions import Conflict, NotFound
 
 def get_airports(name=None):
@@ -10,6 +11,13 @@ def get_airport(name):
         raise NotFound('Airport does not exists.')
     else:
         return airport
+
+def get_airports_with_origin(origin):
+    airports = get_route_with_origin(origin)
+    if not airports:
+        raise NotFound('Origin does not have any Airports.')
+    else:
+        return airports
 
 def add_airport(airport):
     try:

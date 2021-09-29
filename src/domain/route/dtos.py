@@ -1,7 +1,7 @@
 from domain.route import entity
 from flask_mongoengine import BaseQuerySet
 from domain.airport.service import get_airport
-from domain.airport.dtos import json_from_airport
+from domain.airport.dtos import json_from_airport, json_from_airports
 
 def args_to_origin(args):
     origin_name = args.get('origin', None)
@@ -27,6 +27,12 @@ def json_from_route(route):
 
 def json_from_routes(routes):
     return {'routes': list(map(json_from_route, routes))} if isinstance(routes, BaseQuerySet) else json_from_route(routes)
+
+def json_from_destination(route):
+    return json_from_airports(route.destination)
+
+def json_from_destinations(routes):
+    return {'destinations': list(map(json_from_destination, routes))} if isinstance(routes, BaseQuerySet) else json_from_destination(routes)
 
 def route_from_json(route_json):
     return entity.Route(

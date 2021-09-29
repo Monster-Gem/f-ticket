@@ -1,6 +1,7 @@
  
 from flask import Blueprint, request
 from . import dtos, service
+from domain.route.dtos import args_to_origin, json_from_destinations
 from domain.auth.decorators import admin_required, user_required
 import json
 
@@ -15,6 +16,11 @@ def add_airport(authenticated_user):
 @user_required
 def get_airports(authenticated_user):
     return dtos.json_from_airports(service.get_airports(dtos.args_to_name(request.args)))
+
+@airport.route('/destinations', methods = ['GET'])
+@user_required
+def get_airports_with_origin(authenticated_user):
+    return json_from_destinations(service.get_airports_with_origin(args_to_origin(request.args)))
 
 @airport.route('', methods = ['DELETE'])
 @admin_required

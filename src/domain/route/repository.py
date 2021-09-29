@@ -5,7 +5,7 @@ def get_all_routes():
     return entity.Route.objects()
 
 def get_route_with_origin(origin):
-    return entity.Route.objects(origin=origin).first()
+    return entity.Route.objects(origin=origin)
 
 def get_route_with_destination(destination):
     return entity.Route.objects(destination=destination).first()
