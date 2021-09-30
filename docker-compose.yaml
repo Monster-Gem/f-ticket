@@ -1,5 +1,23 @@
 version: "3.8"
+
+networks: 
+    f-network:    
+        ipam:
+            config:
+                - subnet: 172.20.0.0/24
+
 services:
+    flask_app:
+        build: .
+        container_name: flying_tickets_app
+        ports:
+            - '5000:5000'
+        depends_on:
+            - "mongodb"
+        networks:
+            f-network:
+                ipv4_address: 172.20.0.5
+
     mongodb:
         image: mongo
         container_name: mongodb
@@ -8,6 +26,9 @@ services:
             - PGID=1000
         volumes:
             - ~/mongodb/database:/data/db
-            - ./script.sh:/docker-entrypoint-initdb.d/script.sh
+            - ./src/scripts/mongo_script.sh:/docker-entrypoint-initdb.d/mongo_script.sh
         ports:
             - 27017:27017
+        networks:
+            f-network:
+                ipv4_address: 172.20.0.6
