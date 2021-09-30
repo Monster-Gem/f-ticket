@@ -1,23 +1,26 @@
 # Flying Tickets
 
-It's recommended that you create a virtual environment. After that, to install the required packages, run:
+## Team
 
-```shell
-pip install -r requirements.txt
-```
+- Gustavo Alves Pacheco (11821ECP011)
+- Lucas Resende Carneiro (11811ECP009)
 
-Create a `.env` file on the root directory for this project, containing:
-
-```
-DATABASE_NAME={database_name}
-DATABASE_HOST={database_host}
-DATABASE_PORT={database_port}
-SECRET_KEY={secret_key}
-```
+## Running Instructions
 
 Run the project with:
 
 ```shell
-cd src
-flask run
+docker compose up -d
 ```
+
+## Documentation
+
+### Database Diagram
+
+![](/docs/uml.jpg)
+
+The database used was Mongodb, using flask-mongoengine and mongoengine as communication with flask.
+
+### Routes Documentation
+
+You can import [this file](/docs/insomnia.har) into [Insomnia](https://insomnia.rest) to have all routes listed, along with examples.
