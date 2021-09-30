@@ -28,7 +28,7 @@ def delete_flight(flight):
 
 def update_flight(flight, update_flight):
     for key, value in update_flight.items():
-        if value:
+        if value is not None:
             flight[key] = value
     flight.save()
     return flight

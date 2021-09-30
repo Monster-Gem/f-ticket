@@ -1,0 +1,3 @@
+{"_id":{"$oid":"61562a970a69bd8c5c02b6ac"},"name":"Aeroporto de Araguari","city":{"$oid":"61562a5f0a69bd8c5c02b6ab"}}
+{"_id":{"$oid":"61562a9d0a69bd8c5c02b6ad"},"name":"Aeroporto de Uberlândia","city":{"$oid":"61562a550a69bd8c5c02b6a9"}}
+{"_id":{"$oid":"61562aa20a69bd8c5c02b6ae"},"name":"Aeroporto de Araxá","city":{"$oid":"61562a5b0a69bd8c5c02b6aa"}}

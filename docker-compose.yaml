@@ -26,6 +26,7 @@ services:
             - PGID=1000
         volumes:
             - ~/mongodb/database:/data/db
+            - ./src/scripts/seeds:/seeds
             - ./src/scripts/mongo_script.sh:/docker-entrypoint-initdb.d/mongo_script.sh
         ports:
             - 27017:27017

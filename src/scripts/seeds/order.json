@@ -1,0 +1,1 @@
+{"_id":{"$oid":"61562f85cdc2d8342c42dd54"},"public_id":"4223fef4-fab1-4520-8c02-805453f1ed96","status":"FINISHED","flight":{"$oid":"61562cd50a69bd8c5c02b6b9"},"customer":{"$oid":"61562a194f66f0aab33118bf"},"number_of_seats":20}
