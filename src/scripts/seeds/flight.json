@@ -1,0 +1,5 @@
+{"_id":{"$oid":"61562c360a69bd8c5c02b6b5"},"public_id":"2c7d3e8c-c846-4718-bd06-e14c89ce1832","price":199.99,"max_capacity":185,"route":{"$oid":"61562b420a69bd8c5c02b6b0"},"departure_time":{"$date":"2021-09-10T11:30:00Z"}}
+{"_id":{"$oid":"61562c7d0a69bd8c5c02b6b6"},"public_id":"5e165a96-c7d6-4fae-88ed-5df0510a7cc3","price":199.99,"max_capacity":185,"route":{"$oid":"61562b530a69bd8c5c02b6b2"},"departure_time":{"$date":"2021-09-10T11:30:00Z"}}
+{"_id":{"$oid":"61562ca30a69bd8c5c02b6b7"},"public_id":"95162457-3707-40d7-b197-02198a201087","price":99.99,"max_capacity":100,"route":{"$oid":"61562b530a69bd8c5c02b6b2"},"departure_time":{"$date":"2021-09-10T17:30:00Z"}}
+{"_id":{"$oid":"61562cbb0a69bd8c5c02b6b8"},"public_id":"40cfc595-4321-479e-a054-d24927c381c4","price":299.99,"max_capacity":200,"route":{"$oid":"61562b530a69bd8c5c02b6b2"},"departure_time":{"$date":"2021-09-10T22:30:00Z"}}
+{"_id":{"$oid":"61562cd50a69bd8c5c02b6b9"},"public_id":"a89d4289-bf88-4590-8e6e-d4418be619cf","price":59.99,"max_capacity":10,"route":{"$oid":"61562b530a69bd8c5c02b6b2"},"departure_time":{"$date":"2021-09-10T23:30:00Z"}}

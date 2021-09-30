@@ -1,3 +1,10 @@
 #!/bin/bash
 
-mongo --eval 'db.user.insert({"public_id" : "352cdb4e-58b9-406a-b463-e964a9438f5f", "email": "eliot@gmail.com", "password": "pbkdf2:sha256:260000$i0bQKydzIBm0ihLK$56fe084874b69092fd9463ec628f60fac10684e561b3c48a03df7866e7b6ed3f", "role": "ADMIN"});' f_database
+mongoimport --db f_database --collection user --file ./seeds/user.json
+mongoimport --db f_database --collection city --file ./seeds/city.json
+mongoimport --db f_database --collection airport --file ./seeds/airport.json
+mongoimport --db f_database --collection route --file ./seeds/route.json
+mongoimport --db f_database --collection flight --file ./seeds/flight.json
+mongoimport --db f_database --collection order --file ./seeds/order.json
+mongoimport --db f_database --collection ticket --file ./seeds/ticket.json
+echo "Database populated"
