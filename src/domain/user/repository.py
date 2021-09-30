@@ -23,3 +23,8 @@ def update_user(user, update_user):
             user[key] = value
     user.save()
     return user
+
+def set_user_token(user, token):
+    user.last_valid_token = token
+    user.save()
+    return user

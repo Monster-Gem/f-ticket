@@ -27,3 +27,9 @@ def delete_user(email):
 
 def update_user(email, update_user):
     return repository.update_user(get_user(email), update_user)
+
+def set_user_token(user, token):
+    return repository.set_user_token(user, token)
+
+def reset_user_token(user):
+    return repository.set_user_token(user, None)

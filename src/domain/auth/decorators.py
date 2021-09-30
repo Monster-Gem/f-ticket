@@ -16,6 +16,8 @@ def user_required(function):
         try:
             data = decode(token, SECRET_KEY)
             authenticated_user = get_user_by_public_id(data['public_id'])
+            if authenticated_user.last_valid_token != token:
+                raise Unauthorized()
         except:
             raise Unauthorized('Token is invalid')
         return function(authenticated_user, *args, **kwargs)

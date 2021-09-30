@@ -1,5 +1,6 @@
 from flask import Blueprint, request
 from . import dtos, service
+from domain.auth.decorators import user_required
 
 auth = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -12,3 +13,9 @@ def sign_up():
 def sign_in():
     user, token = service.sign_in(dtos.client_from_json(request.get_json()))
     return dtos.json_from_client(user, token)
+
+@auth.route('/log-out', methods = ['POST'])
+@user_required
+def log_out(authenticated_user):
+    service.log_out(authenticated_user)
+    return {}
