@@ -8,12 +8,17 @@ def get_user_by_public_id(public_id):
     return repository.get_user_by_public_id(public_id)
 
 def get_user(email):
-    return repository.get_user(email)
+    user = repository.get_user(email)
+    if not user:
+        raise NotFound('User does not exists.')
+    else:
+        return user
 
 def add_user(user):
-    if get_user(user.email):
+    try:
+        get_user(user.email)
         raise Conflict('User already exists. Please Log in.')
-    else:
+    except NotFound:
         return repository.add_user(user)
 
 def delete_user(email):
@@ -21,11 +26,7 @@ def delete_user(email):
     return
 
 def update_user(email, update_user):
-    user = get_user(email)
-    if not user:
-        raise NotFound('User does not exists.')
-    else:
-        return repository.update_user(user, update_user)
+    return repository.update_user(get_user(email), update_user)
 
 def set_user_token(user, token):
     return repository.set_user_token(user, token)
