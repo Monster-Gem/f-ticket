@@ -25,6 +25,7 @@ def args_to_departure_time(args):
 
 def json_from_flight(flight):
     return {
+        'flight_id': flight.public_id,
         'price': str(flight.price),
         'max_capacity': flight.max_capacity,
         "route": json_from_route(flight.route), 
