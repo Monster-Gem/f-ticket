@@ -8,6 +8,8 @@ from domain.airport.controller import airport
 from domain.route.controller import route
 from domain.flight.controller import flight
 from domain.user.controller import user
+from domain.order.controller import order
+from domain.ticket.controller import ticket
 
 app = Flask(__name__)
 
@@ -18,6 +20,8 @@ app.register_blueprint(city)
 app.register_blueprint(airport)
 app.register_blueprint(route)
 app.register_blueprint(flight)
+app.register_blueprint(order)
+app.register_blueprint(ticket)
 
 app.config['MONGODB_SETTINGS'] = {
     'db':DATABASE_NAME,

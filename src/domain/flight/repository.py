@@ -8,9 +8,6 @@ def get_all_flights():
 def get_flight(route, departure_time):
     return entity.Flight.objects(Q(route=route) & Q(departure_time=departure_time)).first()
 
-def get_flight_with_departure_date(departure_date):
-    return entity.Flight.objects(departure_time=departure_date)
-
 def get_flight_with_route(route):
     return entity.Flight.objects(route=route)
 
@@ -35,3 +32,10 @@ def update_flight(flight, update_flight):
             flight[key] = value
     flight.save()
     return flight
+
+def get_flight_by_public_id(public_id):
+    return entity.Flight.objects(public_id=public_id).get_or_404()
+
+def get_flight_with_number_of_seats_and_public_id(public_id, number_of_seats):
+    return entity.Flight.objects(Q(public_id=public_id) 
+        & Q(max_capacity__gte=number_of_seats)).get_or_404()
