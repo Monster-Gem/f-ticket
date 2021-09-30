@@ -9,7 +9,7 @@ def _bigger_than_zero(value):
         raise database.ValidationError('value cannot be zero')
 
 class Order(database.Document):
-    public_id = database.StringField(max_length=50, unique = True, default=str(uuid.uuid4()))
+    public_id = database.StringField(max_length=50, unique = True, default=lambda: str(uuid.uuid4()))
     status = database.EnumField(OrderStatus, default=OrderStatus.RESERVED)
     flight = database.ReferenceField(Flight)
     customer = database.ReferenceField(User, unique_with='flight')

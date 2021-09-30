@@ -4,6 +4,8 @@ from domain.order import entity
 from domain.flight.service import get_flight_with_number_of_seats_and_public_id
 from werkzeug.exceptions import BadRequest
 from domain.user.dtos import json_from_user
+from domain.ticket.service import get_tickets_from_order
+from domain.ticket.dtos import json_from_tickets
 
 def reservation_from_json(reservation_json):
     number_of_seats = reservation_json.get('number_of_seats')
@@ -18,13 +20,13 @@ def reservation_from_json(reservation_json):
 def json_from_orders(orders):
     return {'orders': list(map(json_from_order, orders))} if isinstance(orders, BaseQuerySet) else json_from_order(orders)
 
-
 def json_from_order(order):
     return {
         "order_id": order.public_id,
         "status": str(order.status.value),
         "customer": json_from_user(order.customer),
-        "number_of_seats": order.number_of_seats
+        "number_of_seats": order.number_of_seats,
+        "tickets": json_from_tickets(get_tickets_from_order(order))
     }
 
 def args_to_public_id(args):

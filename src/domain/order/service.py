@@ -12,6 +12,8 @@ def make_reservation(customer, order):
 
 def confirm_reservation(customer, public_id):
     order = get_order(customer, public_id)
+    if order.status == OrderStatus.FINISHED:
+        return order 
     order.status = OrderStatus.FINISHED
     create_tickets(order, order.number_of_seats)
     return repository.add_order(order)

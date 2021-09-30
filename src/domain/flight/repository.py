@@ -37,5 +37,5 @@ def get_flight_by_public_id(public_id):
     return entity.Flight.objects(public_id=public_id).get_or_404()
 
 def get_flight_with_number_of_seats_and_public_id(public_id, number_of_seats):
-    return entity.Flight.objects(Q(public_id=public_id)
-        & Q(number_of_seats__gte=number_of_seats)).get_or_404()
+    return entity.Flight.objects(Q(public_id=public_id) 
+        & Q(max_capacity__gte=number_of_seats)).get_or_404()

@@ -9,14 +9,8 @@ def create_tickets(order, number_of_tickets):
     return tickets
 
 def delete_tickets(order):
-    repository.delete_tickets_with_order(order)
+    repository.delete_all_tickets_with_order(order)
     return
 
-def get_tickets(customer, ticket_id=None):
-    if customer and ticket_id:
-        return get_ticket(customer, ticket_id)
-    else:
-        return repository.get_all_tickets_from_user(customer)
-
-def get_ticket(customer, public_id):
-    return repository.get_ticket_with_user_and_public_id(customer, public_id)
+def get_tickets_from_order(order):
+    return repository.get_all_tickets_from_order(order)
