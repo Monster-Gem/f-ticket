@@ -34,4 +34,4 @@ app.config['SECRET_KEY'] = SECRET_KEY
 database.init_app(app)
 
 if __name__ == '__main__':
-    app.run(host='172.20.0.5', port=5000, debug=True)
+    app.run(host='0.0.0.0')
